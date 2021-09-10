@@ -43,9 +43,10 @@ void main() {
 
     sut = DashValidation()
         .required()
+        .email()
         .addSingle(validator: dashValidatorSpy)
         .validate('value');
-    expect(sut, defaultErrorMessage);
+    expect(sut, emailFieldMessage);
   });
 
   group('builders', () {
@@ -94,6 +95,18 @@ void main() {
       expect(
         sut.validators[0],
         isA<RequiredDashValidation>(),
+      );
+    });
+
+    test(
+        'DashValidator.email should return DashValidator with EmailDashValidation in validators list',
+        () {
+      final sut = DashValidation().email();
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<EmailDashValidation>(),
       );
     });
   });
