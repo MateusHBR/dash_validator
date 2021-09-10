@@ -1,10 +1,10 @@
 import 'validations/validations.dart';
 import 'dash_validator_value.dart';
 
-class DashValidation {
+class DashValidator {
   final List<DashValidatorValue> _validators = [];
 
-  DashValidation();
+  DashValidator();
 
   List<DashValidatorValue> get validators => _validators;
 
@@ -20,7 +20,7 @@ class DashValidation {
     return null;
   }
 
-  DashValidation addSingle({
+  DashValidator addSingle({
     required DashValidatorValue validator,
   }) {
     _validators.add(validator);
@@ -28,7 +28,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation addMultiple({
+  DashValidator addMultiple({
     required List<DashValidatorValue> validators,
   }) {
     _validators.addAll(validators);
@@ -36,7 +36,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation required({
+  DashValidator required({
     String errorMessage = requiredFieldMessage,
   }) {
     _validators.add(
@@ -46,7 +46,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation email({
+  DashValidator email({
     String errorMessage = emailFieldMessage,
   }) {
     _validators.add(
@@ -56,7 +56,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation regExp({
+  DashValidator regExp({
     required String errorMessage,
     required RegExp regexp,
   }) {
@@ -64,6 +64,44 @@ class DashValidation {
       RegExpDashValidation(
         errorMessage: errorMessage,
         regexp: regexp,
+      ),
+    );
+
+    return this;
+  }
+
+  DashValidator maxLength({
+    required String errorMessage,
+    required int length,
+  }) {
+    _validators.add(
+      MaxLengthDashValidation(errorMessage: errorMessage, maxLength: length),
+    );
+
+    return this;
+  }
+
+  DashValidator minLength({
+    required String errorMessage,
+    required int length,
+  }) {
+    _validators.add(
+      MinLengthDashValidation(errorMessage: errorMessage, minLength: length),
+    );
+
+    return this;
+  }
+
+  DashValidator betweenLength({
+    required String errorMessage,
+    required int maxLength,
+    required int minLength,
+  }) {
+    _validators.add(
+      BetweenLengthDashValidation(
+        errorMessage: errorMessage,
+        minLength: minLength,
+        maxLength: maxLength,
       ),
     );
 

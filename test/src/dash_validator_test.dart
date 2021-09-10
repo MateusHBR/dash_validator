@@ -5,7 +5,7 @@ void main() {
   test('should validate calling all fields from list', () {
     final sut = DashValidatorSpy(isValid: true);
 
-    DashValidation().addSingle(validator: sut).validate('value');
+    DashValidator().addSingle(validator: sut).validate('value');
 
     expect(sut.calledValidation, 1);
   });
@@ -13,7 +13,7 @@ void main() {
   test('should validate calling all fields from list', () {
     final sut = DashValidatorSpy(isValid: true);
 
-    DashValidation().addMultiple(validators: [sut, sut, sut]).validate('value');
+    DashValidator().addMultiple(validators: [sut, sut, sut]).validate('value');
 
     expect(sut.calledValidation, 3);
   });
@@ -21,7 +21,7 @@ void main() {
   test('should validate calling all fields from list', () {
     final sut = DashValidatorSpy(isValid: true);
 
-    DashValidation().addMultiple(validators: [sut, sut, sut]).validate('value');
+    DashValidator().addMultiple(validators: [sut, sut, sut]).validate('value');
 
     expect(sut.calledValidation, 3);
   });
@@ -29,19 +29,19 @@ void main() {
   test('should return the first error message from the list', () {
     final dashValidatorSpy = DashValidatorSpy(isValid: false);
 
-    String? sut = DashValidation()
+    String? sut = DashValidator()
         .addSingle(validator: dashValidatorSpy)
         .required()
         .validate('value');
     expect(sut, defaultErrorMessage);
 
-    sut = DashValidation()
+    sut = DashValidator()
         .required()
         .addSingle(validator: dashValidatorSpy)
         .validate('');
     expect(sut, requiredFieldMessage);
 
-    sut = DashValidation()
+    sut = DashValidator()
         .required()
         .email()
         .addSingle(validator: dashValidatorSpy)
@@ -53,7 +53,7 @@ void main() {
     test(
         'DashValidator.addMultiple should return DashValidator with all validators from the list',
         () {
-      final sut = DashValidation().addMultiple(validators: [
+      final sut = DashValidator().addMultiple(validators: [
         RequiredDashValidation(),
         RequiredDashValidation(),
       ]);
@@ -74,7 +74,7 @@ void main() {
     test(
         'DashValidator.addSingle should return DashValidator with only the first validator from list',
         () {
-      final sut = DashValidation().addSingle(
+      final sut = DashValidator().addSingle(
         validator: RequiredDashValidation(),
       );
 
@@ -89,7 +89,7 @@ void main() {
     test(
         'DashValidator.required should return DashValidator with RequiredDashValidation in validators list',
         () {
-      final sut = DashValidation().required();
+      final sut = DashValidator().required();
 
       expect(sut.validators.length, 1);
       expect(
@@ -101,7 +101,7 @@ void main() {
     test(
         'DashValidator.email should return DashValidator with EmailDashValidation in validators list',
         () {
-      final sut = DashValidation().email();
+      final sut = DashValidator().email();
 
       expect(sut.validators.length, 1);
       expect(
@@ -113,7 +113,7 @@ void main() {
     test(
         'DashValidator.regExp should return DashValidator with RegExpDashValidation in validators list',
         () {
-      final sut = DashValidation().regExp(
+      final sut = DashValidator().regExp(
         errorMessage: 'any',
         regexp: RegExp('any'),
       );
@@ -122,6 +122,52 @@ void main() {
       expect(
         sut.validators[0],
         isA<RegExpDashValidation>(),
+      );
+    });
+
+    test(
+        'DashValidator.maxLength should return DashValidator with MaxLengthDashValidation in validators list',
+        () {
+      final sut = DashValidator().maxLength(
+        errorMessage: 'any',
+        length: 4,
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<MaxLengthDashValidation>(),
+      );
+    });
+
+    test(
+        'DashValidator.minLength should return DashValidator with MinLengthDashValidation in validators list',
+        () {
+      final sut = DashValidator().minLength(
+        errorMessage: 'any',
+        length: 4,
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<MinLengthDashValidation>(),
+      );
+    });
+
+    test(
+        'DashValidator.between should return DashValidator with BetweenLengthDashValidation in validators list',
+        () {
+      final sut = DashValidator().betweenLength(
+        errorMessage: 'any',
+        minLength: 4,
+        maxLength: 6,
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<BetweenLengthDashValidation>(),
       );
     });
   });
