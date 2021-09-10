@@ -3,10 +3,10 @@ import '../../dash_validator_value.dart';
 class RegExpDashValidation extends DashValidatorValue<String> {
   @override
   final String errorMessage;
-  final RegExp regex;
+  final RegExp regexp;
 
   RegExpDashValidation({
-    required this.regex,
+    required this.regexp,
     required this.errorMessage,
   });
 
@@ -16,7 +16,7 @@ class RegExpDashValidation extends DashValidatorValue<String> {
       return true;
     }
 
-    if (regex.hasMatch(value!)) {
+    if (regexp.hasMatch(value!)) {
       return true;
     }
 

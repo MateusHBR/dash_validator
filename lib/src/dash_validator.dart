@@ -55,4 +55,18 @@ class DashValidation {
 
     return this;
   }
+
+  DashValidation regExp({
+    required String errorMessage,
+    required RegExp regexp,
+  }) {
+    _validators.add(
+      RegExpDashValidation(
+        errorMessage: errorMessage,
+        regexp: regexp,
+      ),
+    );
+
+    return this;
+  }
 }

@@ -8,14 +8,14 @@ void main() {
       String? sut = '';
       bool isValid = RegExpDashValidation(
         errorMessage: '',
-        regex: RegExp(''),
+        regexp: RegExp(''),
       ).isValid(sut);
       expect(isValid, true);
 
       sut = null;
       isValid = RegExpDashValidation(
         errorMessage: '',
-        regex: RegExp(''),
+        regexp: RegExp(''),
       ).isValid(sut);
       expect(isValid, true);
     });
@@ -28,14 +28,14 @@ void main() {
       String? sut = 'mateushbr@email.com';
       bool isValid = RegExpDashValidation(
         errorMessage: '',
-        regex: emailRegex,
+        regexp: emailRegex,
       ).isValid(sut);
       expect(isValid, true);
 
       sut = 'valid_email@flutter.com.br';
       isValid = RegExpDashValidation(
         errorMessage: '',
-        regex: emailRegex,
+        regexp: emailRegex,
       ).isValid(sut);
       expect(isValid, true);
     });
@@ -48,14 +48,14 @@ void main() {
       String? sut = 'mateushbr.com';
       bool isValid = RegExpDashValidation(
         errorMessage: '',
-        regex: emailRegex,
+        regexp: emailRegex,
       ).isValid(sut);
       expect(isValid, false);
 
       sut = '@flutter.com.br';
       isValid = RegExpDashValidation(
         errorMessage: '',
-        regex: emailRegex,
+        regexp: emailRegex,
       ).isValid(sut);
       expect(isValid, false);
     });

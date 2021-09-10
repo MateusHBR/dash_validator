@@ -109,6 +109,21 @@ void main() {
         isA<EmailDashValidation>(),
       );
     });
+
+    test(
+        'DashValidator.regExp should return DashValidator with RegExpDashValidation in validators list',
+        () {
+      final sut = DashValidation().regExp(
+        errorMessage: 'any',
+        regexp: RegExp('any'),
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<RegExpDashValidation>(),
+      );
+    });
   });
 }
 
