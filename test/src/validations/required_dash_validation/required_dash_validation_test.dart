@@ -1,5 +1,6 @@
-import 'package:dash_validator/src/validations/required_dash_validation/required_dash_validation.dart';
 import 'package:test/test.dart';
+
+import 'package:dash_validator/src/validations/required_dash_validation/required_dash_validation.dart';
 
 void main() {
   group('Required Validation', () {

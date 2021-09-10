@@ -43,9 +43,10 @@ void main() {
 
     sut = DashValidation()
         .required()
+        .email()
         .addSingle(validator: dashValidatorSpy)
         .validate('value');
-    expect(sut, defaultErrorMessage);
+    expect(sut, emailFieldMessage);
   });
 
   group('builders', () {
@@ -96,12 +97,39 @@ void main() {
         isA<RequiredDashValidation>(),
       );
     });
+
+    test(
+        'DashValidator.email should return DashValidator with EmailDashValidation in validators list',
+        () {
+      final sut = DashValidation().email();
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<EmailDashValidation>(),
+      );
+    });
+
+    test(
+        'DashValidator.regExp should return DashValidator with RegExpDashValidation in validators list',
+        () {
+      final sut = DashValidation().regExp(
+        errorMessage: 'any',
+        regexp: RegExp('any'),
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<RegExpDashValidation>(),
+      );
+    });
   });
 }
 
 const defaultErrorMessage = 'error message';
 
-class DashValidatorSpy extends DashValidatorValue {
+class DashValidatorSpy extends DashValidatorValue<String> {
   int calledValidation = 0;
 
   final bool _isValid;

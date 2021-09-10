@@ -40,7 +40,31 @@ class DashValidation {
     String errorMessage = requiredFieldMessage,
   }) {
     _validators.add(
-      RequiredDashValidation(errorMessage: requiredFieldMessage),
+      RequiredDashValidation(errorMessage: errorMessage),
+    );
+
+    return this;
+  }
+
+  DashValidation email({
+    String errorMessage = emailFieldMessage,
+  }) {
+    _validators.add(
+      EmailDashValidation(errorMessage: errorMessage),
+    );
+
+    return this;
+  }
+
+  DashValidation regExp({
+    required String errorMessage,
+    required RegExp regexp,
+  }) {
+    _validators.add(
+      RegExpDashValidation(
+        errorMessage: errorMessage,
+        regexp: regexp,
+      ),
     );
 
     return this;

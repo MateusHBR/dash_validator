@@ -2,7 +2,7 @@ import '../../dash_validator_value.dart';
 
 const String requiredFieldMessage = 'The field is required.';
 
-class RequiredDashValidation extends DashValidatorValue {
+class RequiredDashValidation extends DashValidatorValue<String> {
   @override
   final String errorMessage;
 
