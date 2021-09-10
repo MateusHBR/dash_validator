@@ -124,6 +124,52 @@ void main() {
         isA<RegExpDashValidation>(),
       );
     });
+
+    test(
+        'DashValidator.maxLength should return DashValidator with MaxLengthDashValidation in validators list',
+        () {
+      final sut = DashValidation().maxLength(
+        errorMessage: 'any',
+        length: 4,
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<MaxLengthDashValidation>(),
+      );
+    });
+
+    test(
+        'DashValidator.minLength should return DashValidator with MinLengthDashValidation in validators list',
+        () {
+      final sut = DashValidation().minLength(
+        errorMessage: 'any',
+        length: 4,
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<MinLengthDashValidation>(),
+      );
+    });
+
+    test(
+        'DashValidator.between should return DashValidator with BetweenLengthDashValidation in validators list',
+        () {
+      final sut = DashValidation().betweenLength(
+        errorMessage: 'any',
+        minLength: 4,
+        maxLength: 6,
+      );
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<BetweenLengthDashValidation>(),
+      );
+    });
   });
 }
 

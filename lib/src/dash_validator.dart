@@ -69,4 +69,42 @@ class DashValidation {
 
     return this;
   }
+
+  DashValidation maxLength({
+    required String errorMessage,
+    required int length,
+  }) {
+    _validators.add(
+      MaxLengthDashValidation(errorMessage: errorMessage, maxLength: length),
+    );
+
+    return this;
+  }
+
+  DashValidation minLength({
+    required String errorMessage,
+    required int length,
+  }) {
+    _validators.add(
+      MinLengthDashValidation(errorMessage: errorMessage, minLength: length),
+    );
+
+    return this;
+  }
+
+  DashValidation betweenLength({
+    required String errorMessage,
+    required int maxLength,
+    required int minLength,
+  }) {
+    _validators.add(
+      BetweenLengthDashValidation(
+        errorMessage: errorMessage,
+        minLength: minLength,
+        maxLength: maxLength,
+      ),
+    );
+
+    return this;
+  }
 }
