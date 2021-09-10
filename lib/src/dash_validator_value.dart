@@ -1,9 +1,9 @@
-abstract class DashValidatorValue {
+abstract class DashValidatorValue<T> {
   String get errorMessage;
 
-  bool isValid(String? value);
+  bool isValid(T? value);
 
-  String? call(String? value) {
+  String? call(T? value) {
     return isValid(value) ? null : errorMessage;
   }
 }

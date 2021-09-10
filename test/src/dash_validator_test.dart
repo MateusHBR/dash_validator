@@ -101,7 +101,7 @@ void main() {
 
 const defaultErrorMessage = 'error message';
 
-class DashValidatorSpy extends DashValidatorValue {
+class DashValidatorSpy extends DashValidatorValue<String> {
   int calledValidation = 0;
 
   final bool _isValid;
