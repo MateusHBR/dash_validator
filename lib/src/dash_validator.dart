@@ -1,10 +1,10 @@
 import 'validations/validations.dart';
 import 'dash_validator_value.dart';
 
-class DashValidation {
+class DashValidator {
   final List<DashValidatorValue> _validators = [];
 
-  DashValidation();
+  DashValidator();
 
   List<DashValidatorValue> get validators => _validators;
 
@@ -20,7 +20,7 @@ class DashValidation {
     return null;
   }
 
-  DashValidation addSingle({
+  DashValidator addSingle({
     required DashValidatorValue validator,
   }) {
     _validators.add(validator);
@@ -28,7 +28,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation addMultiple({
+  DashValidator addMultiple({
     required List<DashValidatorValue> validators,
   }) {
     _validators.addAll(validators);
@@ -36,7 +36,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation required({
+  DashValidator required({
     String errorMessage = requiredFieldMessage,
   }) {
     _validators.add(
@@ -46,7 +46,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation email({
+  DashValidator email({
     String errorMessage = emailFieldMessage,
   }) {
     _validators.add(
@@ -56,7 +56,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation regExp({
+  DashValidator regExp({
     required String errorMessage,
     required RegExp regexp,
   }) {
@@ -70,7 +70,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation maxLength({
+  DashValidator maxLength({
     required String errorMessage,
     required int length,
   }) {
@@ -81,7 +81,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation minLength({
+  DashValidator minLength({
     required String errorMessage,
     required int length,
   }) {
@@ -92,7 +92,7 @@ class DashValidation {
     return this;
   }
 
-  DashValidation betweenLength({
+  DashValidator betweenLength({
     required String errorMessage,
     required int maxLength,
     required int minLength,
