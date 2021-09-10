@@ -2,9 +2,9 @@ import 'validations/validations.dart';
 import 'dash_validator_value.dart';
 
 class DashValidation {
-  final List<DashValidatorValue> _validators = const [];
+  final List<DashValidatorValue> _validators = [];
 
-  const DashValidation();
+  DashValidation();
 
   List<DashValidatorValue> get validators => _validators;
 
