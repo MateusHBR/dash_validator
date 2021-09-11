@@ -10,26 +10,118 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Dash Validation
+Is a Dart package without dependencies created to provides a easy way to validate fields.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- [x] Interface to create custom validation;
+- [x] Required valiadation;
+- [x] Email validation;
+- [x] MaxLength validation;
+- [x] MinLength validation;
+- [x] BetweenLength validation;
+- [x] RegExp validation;
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+1. Add the package dependency to your project:
+```yaml
+dependencies:
+  # Use the latest version available. Any is just a placeholder
+  dash_validator: any
+```
 
-## Usage
+2. Import the package to the file that you need to use.
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+3. Add to the place that you need to validate
+```dart
+TextFormField(
+  decoration: InputDecoration(
+    labelText: 'Email',
+  ),
+  validator: Validatorless.required().email().validate,
+),
+TextFormField(
+  decoration: InputDecoration(
+    labelText: 'Password',
+  ),
+  validator: Validatorless
+    .required(errorMessage: 'Password ir required')
+    .betweenLength(errorMessage: 'Field length must be between 2 and 5', maxLength: 5, minLength: 2)
+    .validate,
+),
+```
+
+## Dash Validators
+
+We provides some initial validators, and you can contribute to growth together!
+
+**Note**: With the sole exception of `RequiredValidator`, all built in validators will pass on `null` or empty values.
+
+            Class              |       Shortcut       |                         Description                          |
+-------------------------------|----------------------|--------------------------------------------------------------|
+`none`                         |  `.addMultiple([])`  | Ensures all classes that extends DashValidator is validated  |
+`none`                         |  `.addSingle()`      | Ensures the class that extends DashValidator is validated    |
+`RequiredDashValidation`       |  `.required()`       | Ensures the value is not `null` or empty                     |
+`EmailDashValidation`          |  `.email()`          | Ensures the value is a validly formatted email address       |
+`RegExpDashValidation`         |  `.regExp()`         | Ensures the value is validated by a custom Regular Expression|
+`MaxLengthDashValidation`      |  `.maxLength()`      | Ensures the value length is lesser than the length informed  |
+`MinLengthDashValidation`      |  `.minLength()`      | Ensures the value length is bigger than the length informed  |
+`BetweenLengthDashValidation`  |  `.betweenLength()`  | Ensures the value length is between than the length informed |
+
+## Custom Validators
+
+The `DashValidator` supports custom validators being added through classes extending the `DashValidatorValue<T>`.
+
+### Example of Custom Validator
 
 ```dart
-const like = 'sample';
+class CustomDashValidator extends DashValidatorValue<String> {
+  //Here you can set your error message
+  @override
+  final String errorMessage;
+
+  CustomDashValidator({
+    required this.errorMessage,
+  });
+
+  @override
+  bool isValid(String? value) {
+    if (value?.isEmpty ?? true) {
+      return true;
+    }
+
+    //Here you can add the logic to know if your field is valid or not
+
+    return false;
+  }
+}
+
+...
+
+void main() {
+  // start app
+
+  final valueToValidate = 'custom validation';
+
+  final errorMessage = DashValidator()
+                        .addSingle(validator: CustomDashValidator(errorMessage: 'My custom error message'))
+                        .validate(valueToValidate)
+} 
+
+...
+
+//If you are using Flutter, you can add directly to TextFormField
+
+TextFormField(
+  decoration: InputDecoration(
+    labelText: 'Email',
+  ),
+  validator: Validatorless
+              .addSingle(validator: CustomDashValidator(errorMessage: 'My custom error message'))
+              .validate
+),
 ```
 
 ## Additional information
