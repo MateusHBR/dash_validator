@@ -1,6 +1,6 @@
 name: dash_validator
-description: A Dart validation library to validate fields
-version: 1.0.0
+description: A Dart validation library to simplify the use of validation, and used to validate fields and other things
+version: 1.0.1
 homepage: https://github.com/MateusHBR/dash_validator
 
 environment:

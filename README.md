@@ -20,7 +20,7 @@ Is a Dart package without dependencies created to provides a easy way to validat
 - [x] Email validation;
 - [x] MaxLength validation;
 - [x] MinLength validation;
-- [x] BetweenLength validation;
+- [x] RangeLength validation;
 - [x] RegExp validation;
 - [x] Compare to another value validation;
 
@@ -41,15 +41,15 @@ TextFormField(
   decoration: InputDecoration(
     labelText: 'Email',
   ),
-  validator: Validatorless.required().email().validate,
+  validator: DashValidator.required().email().validate,
 ),
 TextFormField(
   decoration: InputDecoration(
     labelText: 'Password',
   ),
-  validator: Validatorless
+  validator: DashValidator
     .required(errorMessage: 'Password ir required')
-    .betweenLength(errorMessage: 'Field length must be between 2 and 5', maxLength: 5, minLength: 2)
+    .range(errorMessage: 'Field length must be between 2 and 5', maxLength: 5, minLength: 2)
     .validate,
 ),
 ```
@@ -119,7 +119,7 @@ TextFormField(
   decoration: InputDecoration(
     labelText: 'Email',
   ),
-  validator: Validatorless
+  validator: DashValidator
               .required(errorMessage: 'Email is required')
               .email()
               .addMultiple(validators: [CustomDashValidator(errorMessage: 'My custom error message')])
