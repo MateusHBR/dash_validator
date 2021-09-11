@@ -23,6 +23,32 @@ void main() {
       expect(isValid, true);
     });
 
+    test(
+        'should return true fields in different cases are equals with ignore case true',
+        () async {
+      final sut = 'Test';
+
+      final isValid = CompareDashValidation(
+        valueToCompare: 'tEst',
+        ignoreCase: true,
+      ).isValid(sut);
+
+      expect(isValid, true);
+    });
+
+    test(
+        'should return false fields in different cases are equals with ignore case false',
+        () async {
+      final sut = 'Test';
+
+      final isValid = CompareDashValidation(
+        valueToCompare: 'tEst',
+        ignoreCase: false,
+      ).isValid(sut);
+
+      expect(isValid, false);
+    });
+
     test('should return false fields are not equals', () async {
       final sut = 'test1';
 
