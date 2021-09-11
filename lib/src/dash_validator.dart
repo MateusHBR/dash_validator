@@ -107,4 +107,20 @@ class DashValidator {
 
     return this;
   }
+
+  DashValidator compare({
+    String errorMessage = compareFieldMessage,
+    bool ignoreCase = false,
+    required String valueToCompare,
+  }) {
+    _validators.add(
+      CompareDashValidation(
+        errorMessage: errorMessage,
+        valueToCompare: valueToCompare,
+        ignoreCase: ignoreCase,
+      ),
+    );
+
+    return this;
+  }
 }
