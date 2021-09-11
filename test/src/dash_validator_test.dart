@@ -156,9 +156,9 @@ void main() {
     });
 
     test(
-        'DashValidator.between should return DashValidator with BetweenLengthDashValidation in validators list',
+        'DashValidator.between should return DashValidator with RangeDashValidation in validators list',
         () {
-      final sut = DashValidator().betweenLength(
+      final sut = DashValidator().range(
         errorMessage: 'any',
         minLength: 4,
         maxLength: 6,
@@ -167,7 +167,7 @@ void main() {
       expect(sut.validators.length, 1);
       expect(
         sut.validators[0],
-        isA<BetweenLengthDashValidation>(),
+        isA<RangeDashValidation>(),
       );
     });
   });

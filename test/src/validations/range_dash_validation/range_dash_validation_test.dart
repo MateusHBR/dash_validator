@@ -1,11 +1,11 @@
-import 'package:dash_validator/src/validations/between_length_dash_validation/between_length_dash_validation.dart';
+import 'package:dash_validator/src/validations/range_dash_validation/range_dash_validation.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Between Length Validation', () {
     test('should return true when field if null or empty', () async {
       String? sut = '';
-      bool isValid = BetweenLengthDashValidation(
+      bool isValid = RangeDashValidation(
         errorMessage: '',
         minLength: 0,
         maxLength: 1,
@@ -13,7 +13,7 @@ void main() {
       expect(isValid, true);
 
       sut = null;
-      isValid = BetweenLengthDashValidation(
+      isValid = RangeDashValidation(
         errorMessage: '',
         minLength: 0,
         maxLength: 1,
@@ -24,7 +24,7 @@ void main() {
     test('should return true if text length is between minLength and maxLength',
         () async {
       String? sut = 'test';
-      bool isValid = BetweenLengthDashValidation(
+      bool isValid = RangeDashValidation(
         errorMessage: '',
         minLength: 2,
         maxLength: 5,
@@ -35,7 +35,7 @@ void main() {
     test('should return false if text length is bigger than maxLength',
         () async {
       String? sut = 'test';
-      bool isValid = BetweenLengthDashValidation(
+      bool isValid = RangeDashValidation(
         errorMessage: '',
         minLength: 1,
         maxLength: 3,
@@ -45,7 +45,7 @@ void main() {
 
     test('should return false if text length is less than minLength', () async {
       String? sut = 'test';
-      bool isValid = BetweenLengthDashValidation(
+      bool isValid = RangeDashValidation(
         errorMessage: '',
         minLength: 6,
         maxLength: 9,
@@ -60,7 +60,7 @@ void main() {
       final Matcher throwsAssertionError = throwsA(isA<AssertionError>());
 
       expect(
-        () => BetweenLengthDashValidation(
+        () => RangeDashValidation(
           errorMessage: '',
           minLength: 6,
           maxLength: 5,

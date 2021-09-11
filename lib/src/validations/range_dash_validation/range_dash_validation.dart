@@ -1,12 +1,12 @@
 import '../../dash_validator_value.dart';
 
-class BetweenLengthDashValidation extends DashValidatorValue<String> {
+class RangeDashValidation extends DashValidatorValue<String> {
   @override
   final String errorMessage;
   final int minLength;
   final int maxLength;
 
-  BetweenLengthDashValidation({
+  RangeDashValidation({
     required this.errorMessage,
     required this.minLength,
     required this.maxLength,

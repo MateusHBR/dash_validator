@@ -67,7 +67,7 @@ Class                          |       Shortcut         |                       
 `RegExpDashValidation`         |   `.regExp()`          | Ensures the value is validated by a custom Regular Expression|
 `MaxLengthDashValidation`      |   `.maxLength()`       | Ensures the value length is lesser than the length informed  |
 `MinLengthDashValidation`      |   `.minLength()`       | Ensures the value length is bigger than the length informed  |
-`BetweenLengthDashValidation`  |   `.betweenLength()`   | Ensures the value length is between than the length informed |
+`RangeDashValidation`          |   `.range()`           | Ensures the value length is between the length informed      |
 
 ## Custom Validators
 
@@ -118,8 +118,10 @@ TextFormField(
     labelText: 'Email',
   ),
   validator: Validatorless
-              .addSingle(validator: CustomDashValidator(errorMessage: 'My custom error message'))
+              .required(errorMessage: 'Email is required')
+              .email()
+              .addMultiple(validators: [CustomDashValidator(errorMessage: 'My custom error message')])
               .validate
-),
+), //In multiple validation you can add multiple validation classes in the array of validators
 ```
 

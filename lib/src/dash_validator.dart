@@ -92,13 +92,13 @@ class DashValidator {
     return this;
   }
 
-  DashValidator betweenLength({
+  DashValidator range({
     required String errorMessage,
     required int maxLength,
     required int minLength,
   }) {
     _validators.add(
-      BetweenLengthDashValidation(
+      RangeDashValidation(
         errorMessage: errorMessage,
         minLength: minLength,
         maxLength: maxLength,
