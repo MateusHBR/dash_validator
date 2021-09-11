@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:dash_validator/src/validations/regex_dash_validation/regex_dash_validation.dart';
+import 'package:dash_validator/src/validations/regexp_dash_validation/regexp_dash_validation.dart';
 
 void main() {
   group('Regexp Validation', () {
