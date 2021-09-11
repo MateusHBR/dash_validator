@@ -57,18 +57,17 @@ TextFormField(
 
 We provides some initial validators, and you can contribute to growth together!
 
-**Note**: With the sole exception of `RequiredValidator`, all built in validators will pass on `null` or empty values.
 
-            Class              |       Shortcut       |                         Description                          |
--------------------------------|----------------------|--------------------------------------------------------------|
-`none`                         |  `.addMultiple([])`  | Ensures all classes that extends DashValidator is validated  |
-`none`                         |  `.addSingle()`      | Ensures the class that extends DashValidator is validated    |
-`RequiredDashValidation`       |  `.required()`       | Ensures the value is not `null` or empty                     |
-`EmailDashValidation`          |  `.email()`          | Ensures the value is a validly formatted email address       |
-`RegExpDashValidation`         |  `.regExp()`         | Ensures the value is validated by a custom Regular Expression|
-`MaxLengthDashValidation`      |  `.maxLength()`      | Ensures the value length is lesser than the length informed  |
-`MinLengthDashValidation`      |  `.minLength()`      | Ensures the value length is bigger than the length informed  |
-`BetweenLengthDashValidation`  |  `.betweenLength()`  | Ensures the value length is between than the length informed |
+Class                          |       Shortcut         |                         Description                          |
+-------------------------------|------------------------|--------------------------------------------------------------|
+`none`                         |   `.addMultiple([])`   | Ensures all classes that extends DashValidator is validated  |
+`none`                         |   `.addSingle()`       | Ensures the class that extends DashValidator is validated    |
+`RequiredDashValidation`       |   `.required()`        | Ensures the value is not `null` or empty                     |
+`EmailDashValidation`          |   `.email()`           | Ensures the value is a validly formatted email address       |
+`RegExpDashValidation`         |   `.regExp()`          | Ensures the value is validated by a custom Regular Expression|
+`MaxLengthDashValidation`      |   `.maxLength()`       | Ensures the value length is lesser than the length informed  |
+`MinLengthDashValidation`      |   `.minLength()`       | Ensures the value length is bigger than the length informed  |
+`BetweenLengthDashValidation`  |   `.betweenLength()`   | Ensures the value length is between than the length informed |
 
 ## Custom Validators
 
@@ -124,8 +123,3 @@ TextFormField(
 ),
 ```
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
