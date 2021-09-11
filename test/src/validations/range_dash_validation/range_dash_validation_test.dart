@@ -2,7 +2,7 @@ import 'package:dash_validator/src/validations/range_dash_validation/range_dash_
 import 'package:test/test.dart';
 
 void main() {
-  group('Between Length Validation', () {
+  group('Range Length Validation', () {
     test('should return true when field if null or empty', () async {
       String? sut = '';
       bool isValid = RangeDashValidation(
