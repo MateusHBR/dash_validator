@@ -170,6 +170,18 @@ void main() {
         isA<RangeDashValidation>(),
       );
     });
+
+    test(
+        'DashValidator.compare should return DashValidator with CompareDashValidation in validators list',
+        () {
+      final sut = DashValidator().compare(valueToCompare: 'other');
+
+      expect(sut.validators.length, 1);
+      expect(
+        sut.validators[0],
+        isA<CompareDashValidation>(),
+      );
+    });
   });
 }
 

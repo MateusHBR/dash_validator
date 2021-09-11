@@ -22,6 +22,7 @@ Is a Dart package without dependencies created to provides a easy way to validat
 - [x] MinLength validation;
 - [x] BetweenLength validation;
 - [x] RegExp validation;
+- [x] Compare to another value validation;
 
 ## Getting started
 
@@ -68,6 +69,7 @@ Class                          |       Shortcut         |                       
 `MaxLengthDashValidation`      |   `.maxLength()`       | Ensures the value length is lesser than the length informed  |
 `MinLengthDashValidation`      |   `.minLength()`       | Ensures the value length is bigger than the length informed  |
 `RangeDashValidation`          |   `.range()`           | Ensures the value length is between the length informed      |
+`CompareDashValidation`        |   `.compare()`         | Ensures the value is compared to another passed by parameter |
 
 ## Custom Validators
 
